@@ -53,22 +53,18 @@ h1 {
   margin: 0 auto;
 }
 
-/* Tab strip */
+/* Tab strip — wraps to fit, no horizontal scroll */
 .tab-strip-wrap {
-  max-width: 720px;
-  margin: 32px auto 0;
-  padding: 0 16px;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
+  max-width: 660px;
+  margin: 28px auto 0;
+  padding: 0 20px;
 }
-.tab-strip-wrap::-webkit-scrollbar { display: none; }
 
 .tab-strip {
   display: flex;
-  gap: 6px;
-  min-width: max-content;
-  padding-bottom: 2px;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
 }
 
 .tab-btn {
@@ -156,6 +152,14 @@ h1 {
   font-size: 0.9375rem;
   line-height: 1.65;
   color: var(--text-muted);
+  margin-bottom: 12px;
+}
+
+.debate-stakes {
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+  font-style: italic;
   margin-bottom: 28px;
   padding-bottom: 28px;
   border-bottom: 1px solid var(--border);
@@ -241,7 +245,7 @@ h1 {
 /* Footer */
 footer {
   border-top: 1px solid var(--border);
-  padding: 24px 24px;
+  padding: 24px;
   text-align: center;
 }
 
@@ -254,17 +258,15 @@ footer {
   font-size: 0.85rem;
 }
 
-.footer-label {
-  color: var(--text-muted);
-}
+.footer-label { color: var(--text-muted); }
 
-.footer-links a {
+footer a {
   color: var(--accent);
   text-decoration: none;
   font-weight: 500;
 }
 
-.footer-links a:hover { text-decoration: underline; }
+footer a:hover { text-decoration: underline; }
 </style>
 </head>
 <body>
@@ -277,7 +279,7 @@ footer {
 <div class="tab-strip-wrap">
   <div class="tab-strip" id="tabs">
     <button class="tab-btn active" onclick="show(0)">Does practice accumulate?</button>
-    <button class="tab-btn" onclick="show(1)">Fix or see through the ego?</button>
+    <button class="tab-btn" onclick="show(1)">Can you cherry-pick?</button>
     <button class="tab-btn" onclick="show(2)">Already awakened?</button>
     <button class="tab-btn" onclick="show(3)">Is it always safe?</button>
     <button class="tab-btn" onclick="show(4)">What is suffering for?</button>
@@ -291,6 +293,7 @@ footer {
       <div class="debate-num">Debate 1 of 5</div>
       <div class="debate-q">Does more practice lead to more benefit?</div>
       <div class="debate-framing">Every app, retreat center, and teacher incentive assumes the answer is yes. The research is less certain. This is the question the industry avoids most systematically.</div>
+      <div class="debate-stakes">Why it matters: If practice doesn't accumulate, the entire framework for long-term commitment — and the business model of most mindfulness institutions — is based on a premise that doesn't hold.</div>
       <div class="camps-label">Where the field divides</div>
       <div class="camps">
         <div class="camp">
@@ -316,25 +319,26 @@ footer {
   <div class="debate" id="d1">
     <div class="debate-card">
       <div class="debate-num">Debate 2 of 5</div>
-      <div class="debate-q">Should you strengthen your ego — or see through it?</div>
-      <div class="debate-framing">The mainstream advice is dissolve the ego. But several serious teachers argue this is exactly wrong, and that premature dissolution produces spiritual bypassing rather than liberation.</div>
+      <div class="debate-q">Can you dissolve the neurotic self without dissolving the motivated self?</div>
+      <div class="debate-framing">Mindfulness promises to reduce anxiety, reactivity, and ego-driven suffering. But the nervous self and the driven self may be the same machinery. If you weaken one, do you weaken both?</div>
+      <div class="debate-stakes">Why it matters: This is the question that every high-achiever who picks up a meditation practice eventually runs into — and that teachers almost never address directly.</div>
       <div class="camps-label">Where the field divides</div>
       <div class="camps">
         <div class="camp">
-          <div class="camp-name">Strengthen it first</div>
-          <div class="camp-desc">Before transcendence is possible, there needs to be a stable self to transcend. Trying to dissolve a weak or wounded ego prematurely produces spiritual bypassing, not liberation.</div>
+          <div class="camp-name">Yes — acceptance enables clearer action</div>
+          <div class="camp-desc">When reactivity and fear dissolve, what remains is more effective, not less. Genuine motivation — curiosity, love, values — doesn't require anxiety to function. Acceptance doesn't mean passivity.</div>
         </div>
         <div class="camp">
-          <div class="camp-name">See through it</div>
-          <div class="camp-desc">The ego isn't a problem to solve — it's a misunderstanding to recognize. Strengthening it first just makes the misunderstanding more comfortable and harder to examine.</div>
+          <div class="camp-name">No — you can't cherry-pick</div>
+          <div class="camp-desc">The capacity for sustained effort, deferred gratification, and competitive ambition are all ego-driven. Weaken the ego and you weaken all three. There is no surgical option for dissolving only the parts you don't like.</div>
         </div>
         <div class="camp">
-          <div class="camp-name">Fighting it makes it worse</div>
-          <div class="camp-desc">Every attempt to dissolve the ego is the ego trying to dissolve itself. The effort reinforces the very thing it's trying to undo. The approach has to be indirect.</div>
+          <div class="camp-name">Both selves dissolve — and something else takes over</div>
+          <div class="camp-desc">At sufficient depth of practice, the distinction between neurotic and motivated collapses. The self that was trying to cherry-pick is the very thing that dissolves. What replaces it is action without a self behind it.</div>
         </div>
         <div class="camp">
-          <div class="camp-name">There's no ego to fix or transcend</div>
-          <div class="camp-desc">There's no 'ego' in the sense being debated — and therefore nothing to fix or transcend. The debate itself is the confusion that needs examining.</div>
+          <div class="camp-name">Unresolved — no teacher has given a mechanism</div>
+          <div class="camp-desc">The claim that compassion or intrinsic motivation fills the gap after ego dissolution is universal and unexamined. For self-interested goals — career, creative achievement, competitive success — no teacher has offered a mechanism for what takes over.</div>
         </div>
       </div>
     </div>
@@ -345,6 +349,7 @@ footer {
       <div class="debate-num">Debate 3 of 5</div>
       <div class="debate-q">Are you already awakened right now?</div>
       <div class="debate-framing">One of the oldest debates in contemplative practice. Whether the answer is yes, no, or neither depends almost entirely on who you ask — and serious teachers land on every side.</div>
+      <div class="debate-stakes">Why it matters: If you're already there, the entire project of gradual practice may be misdirected effort. If you're not, teachings that say you are may be producing complacency rather than transformation.</div>
       <div class="camps-label">Where the field divides</div>
       <div class="camps">
         <div class="camp">
@@ -372,6 +377,7 @@ footer {
       <div class="debate-num">Debate 4 of 5</div>
       <div class="debate-q">Is meditation always safe?</div>
       <div class="debate-framing">The wellness industry treats this as obvious. The empirical research says it's more complicated. The gap between those two positions is rarely discussed in public.</div>
+      <div class="debate-stakes">Why it matters: If the risks are real and underdisclosed, a lot of people are going into intensive practice without informed consent. The silence on this isn't neutral.</div>
       <div class="camps-label">Where the field divides</div>
       <div class="camps">
         <div class="camp">
@@ -399,6 +405,7 @@ footer {
       <div class="debate-num">Debate 5 of 5</div>
       <div class="debate-q">What is suffering actually for?</div>
       <div class="debate-framing">The answer to this question determines nearly everything about how you practice. Move toward it? Away from it? Or is the question itself a category error? The field points in opposite directions.</div>
+      <div class="debate-stakes">Why it matters: Therapeutic mindfulness (reduce suffering) and contemplative mindfulness (use suffering as teacher) are pointing in opposite directions. Both claim to be what "mindfulness" is.</div>
       <div class="camps-label">Where the field divides</div>
       <div class="camps">
         <div class="camp">
@@ -448,8 +455,6 @@ function show(idx) {
   document.getElementById('prevBtn').disabled = idx === 0;
   document.getElementById('nextBtn').disabled = idx === total - 1;
   document.getElementById('counter').textContent = `${idx + 1} / ${total}`;
-  // Scroll tab into view
-  document.querySelectorAll('.tab-btn')[idx].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
 }
 
 function go(dir) {
