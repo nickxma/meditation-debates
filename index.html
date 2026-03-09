@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>5 Questions the Meditation World Can't Agree On</title>
+<title>5 Debates the Meditation World Can't Resolve</title>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -32,8 +32,8 @@ body {
 
 header {
   text-align: center;
-  padding: 52px 24px 24px;
-  max-width: 600px;
+  padding: 52px 24px 20px;
+  max-width: 640px;
   margin: 0 auto;
 }
 
@@ -48,133 +48,136 @@ h1 {
 .subtitle {
   color: var(--text-muted);
   font-size: 0.9375rem;
-  line-height: 1.6;
-  max-width: 480px;
+  line-height: 1.65;
+  max-width: 500px;
   margin: 0 auto;
 }
 
-.progress-row {
+/* Tab strip */
+.tab-strip-wrap {
+  max-width: 720px;
+  margin: 32px auto 0;
+  padding: 0 16px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.tab-strip-wrap::-webkit-scrollbar { display: none; }
+
+.tab-strip {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
-  padding: 28px 16px 20px;
+  gap: 6px;
+  min-width: max-content;
+  padding-bottom: 2px;
 }
 
-.dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--border);
-  transition: background 0.3s;
+.tab-btn {
+  padding: 9px 18px;
+  border-radius: 20px;
+  border: 1.5px solid var(--border);
+  background: var(--surface);
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.15s;
+  font-family: inherit;
 }
 
-.dot.active { background: var(--accent); }
-.dot.done { background: var(--accent); opacity: 0.4; }
+.tab-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
 
-.card-wrap {
+.tab-btn.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+/* Main content */
+.main {
   flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 8px 16px 52px;
+  padding: 28px 16px 52px;
 }
 
-.scene {
+.debate {
+  display: none;
   width: 100%;
-  max-width: 560px;
-  perspective: 1200px;
+  max-width: 640px;
+  animation: fadeIn 0.25s ease;
 }
 
-.card {
-  position: relative;
-  width: 100%;
-  min-height: 420px;
-  transform-style: preserve-3d;
-  transition: transform 0.55s cubic-bezier(0.4, 0.2, 0.2, 1);
-  cursor: pointer;
+.debate.active { display: block; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-.card.flipped { transform: rotateY(180deg); }
-
-.face {
-  position: absolute;
-  inset: 0;
-  min-height: 420px;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-  border-radius: 18px;
-  border: 1px solid var(--border);
+.debate-card {
   background: var(--surface);
-  box-shadow: 0 2px 24px rgba(0,0,0,0.06);
-  padding: 40px 36px;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+  padding: 40px 40px 36px;
 }
 
-@media (max-width: 480px) {
-  .face { padding: 32px 24px; }
+@media (max-width: 520px) {
+  .debate-card { padding: 28px 22px 24px; }
 }
 
-.front {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  gap: 20px;
-}
-
-.q-label {
+.debate-num {
   font-size: 0.7rem;
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--accent);
   background: var(--accent-light);
-  padding: 5px 14px;
+  padding: 4px 12px;
   border-radius: 20px;
+  display: inline-block;
+  margin-bottom: 18px;
 }
 
-.q-text {
-  font-size: clamp(1.2rem, 3vw, 1.6rem);
-  font-weight: 640;
-  line-height: 1.35;
+.debate-q {
+  font-size: clamp(1.2rem, 3vw, 1.55rem);
+  font-weight: 700;
+  line-height: 1.3;
   letter-spacing: -0.025em;
-  max-width: 440px;
+  margin-bottom: 12px;
 }
 
-.flip-cue {
+.debate-framing {
+  font-size: 0.9375rem;
+  line-height: 1.65;
   color: var(--text-muted);
-  font-size: 0.85rem;
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  margin-top: 4px;
-  user-select: none;
+  margin-bottom: 28px;
+  padding-bottom: 28px;
+  border-bottom: 1px solid var(--border);
 }
 
-.flip-cue svg {
-  opacity: 0.5;
-}
-
-.back { transform: rotateY(180deg); }
-
-.back-header {
+.camps-label {
   font-size: 0.7rem;
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--text-muted);
-  margin-bottom: 24px;
+  margin-bottom: 16px;
 }
 
 .camps {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 12px;
 }
 
 .camp {
-  padding: 14px 16px;
+  padding: 16px 18px;
   border-radius: 10px;
   background: var(--bg);
   border-left: 3px solid;
@@ -200,325 +203,261 @@ h1 {
 
 .camp-desc {
   font-size: 0.9rem;
-  line-height: 1.6;
+  line-height: 1.62;
   color: var(--text);
 }
 
-.nav {
+/* Bottom nav */
+.bottom-nav {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  gap: 12px;
-  margin-top: 28px;
+  width: 100%;
+  max-width: 640px;
+  margin-top: 20px;
 }
 
-button {
-  padding: 12px 28px;
+.nav-btn {
+  padding: 11px 24px;
   border-radius: 8px;
   border: 1px solid var(--border);
   background: var(--surface);
   color: var(--text);
-  font-size: 0.9375rem;
+  font-size: 0.9rem;
   font-weight: 500;
   cursor: pointer;
-  transition: border-color 0.15s, color 0.15s, opacity 0.15s;
+  transition: border-color 0.15s, color 0.15s;
   font-family: inherit;
 }
 
-button:hover:not(:disabled) {
-  border-color: var(--accent);
-  color: var(--accent);
-}
+.nav-btn:hover:not(:disabled) { border-color: var(--accent); color: var(--accent); }
+.nav-btn:disabled { opacity: 0.3; cursor: default; }
 
-button:disabled {
-  opacity: 0.3;
-  cursor: default;
-}
-
-button.primary {
-  background: var(--accent);
-  color: #fff;
-  border-color: var(--accent);
-}
-
-button.primary:hover:not(:disabled) {
-  opacity: 0.88;
-  color: #fff;
-}
-
-.done-state {
-  display: none;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  padding: 8px 16px 52px;
-  gap: 20px;
-  max-width: 520px;
-  margin: 0 auto;
-}
-
-.done-state h2 {
-  font-size: 1.5rem;
-  font-weight: 700;
-  letter-spacing: -0.025em;
-}
-
-.done-state p {
+.nav-counter {
+  font-size: 0.8rem;
   color: var(--text-muted);
-  line-height: 1.65;
-  font-size: 0.9375rem;
-  max-width: 400px;
 }
 
-.done-state .quiz-link {
-  display: inline-block;
-  padding: 14px 32px;
-  background: var(--accent);
-  color: #fff;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 0.9375rem;
-  transition: opacity 0.15s;
-}
-
-.done-state .quiz-link:hover { opacity: 0.88; }
-
+/* Footer */
 footer {
-  text-align: center;
-  padding: 28px 24px;
   border-top: 1px solid var(--border);
-  color: var(--text-muted);
+  padding: 24px 24px;
+  text-align: center;
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 6px 20px;
   font-size: 0.85rem;
 }
 
-footer a {
+.footer-label {
+  color: var(--text-muted);
+}
+
+.footer-links a {
   color: var(--accent);
   text-decoration: none;
   font-weight: 500;
 }
 
-footer a:hover { text-decoration: underline; }
+.footer-links a:hover { text-decoration: underline; }
 </style>
 </head>
 <body>
 
 <header>
-  <h1>5 Questions the Meditation World Can't Agree On</h1>
-  <p class="subtitle">These aren't fringe debates. They run through hundreds of hours of contemplative teaching — and nobody resolves them.</p>
+  <h1>5 Debates the Meditation World Can't Resolve</h1>
+  <p class="subtitle">These aren't fringe questions — they're the core tensions that run through serious contemplative teaching. Respected teachers land on opposite sides of each one.</p>
 </header>
 
-<div class="progress-row" id="dots"></div>
-
-<div class="card-wrap" id="cardWrap">
-  <div class="scene" id="scene" onclick="flip()">
-    <div class="card" id="card">
-      <div class="face front" id="front"></div>
-      <div class="face back" id="back"></div>
-    </div>
-  </div>
-  <div class="nav">
-    <button id="prevBtn" onclick="go(-1)" disabled>← Prev</button>
-    <button id="nextBtn" class="primary" onclick="go(1)">Next →</button>
+<div class="tab-strip-wrap">
+  <div class="tab-strip" id="tabs">
+    <button class="tab-btn active" onclick="show(0)">Does practice accumulate?</button>
+    <button class="tab-btn" onclick="show(1)">Fix or see through the ego?</button>
+    <button class="tab-btn" onclick="show(2)">Already awakened?</button>
+    <button class="tab-btn" onclick="show(3)">Is it always safe?</button>
+    <button class="tab-btn" onclick="show(4)">What is suffering for?</button>
   </div>
 </div>
 
-<div class="done-state" id="done">
-  <h2>These are the real debates.</h2>
-  <p>Not fringe positions — these are the views held by serious, respected teachers. The disagreements run deeper than most practitioners realize.</p>
-  <p>Curious what approach might actually fit you?</p>
-  <a class="quiz-link" href="https://nickxma.github.io/meditation-quiz/" target="_blank">Find your meditator type →</a>
-  <button style="border:none; background:none; color:var(--text-muted); cursor:pointer; font-size:0.875rem; padding:0; font-family:inherit;" onclick="restart()">Start over</button>
+<div class="main">
+
+  <div class="debate active" id="d0">
+    <div class="debate-card">
+      <div class="debate-num">Debate 1 of 5</div>
+      <div class="debate-q">Does more practice lead to more benefit?</div>
+      <div class="debate-framing">Every app, retreat center, and teacher incentive assumes the answer is yes. The research is less certain. This is the question the industry avoids most systematically.</div>
+      <div class="camps-label">Where the field divides</div>
+      <div class="camps">
+        <div class="camp">
+          <div class="camp-name">Yes — it accumulates</div>
+          <div class="camp-desc">Years of consistent practice produces real, measurable gains. The skill deepens. Someone with decades of daily practice has a genuine advantage over someone who started last month.</div>
+        </div>
+        <div class="camp">
+          <div class="camp-name">No — you can't improve what's already complete</div>
+          <div class="camp-desc">The thing you're looking for was never absent. More sitting doesn't help you arrive at what's already here. A long-term practitioner has no fundamental advantage over someone encountering this for the first time.</div>
+        </div>
+        <div class="camp">
+          <div class="camp-name">The curve isn't linear</div>
+          <div class="camp-desc">The relationship between practice and benefit isn't monotonic. Too little and nothing shifts. Too much and it can become counterproductive. Individual variation matters more than total hours accumulated.</div>
+        </div>
+        <div class="camp">
+          <div class="camp-name">The question assumes the wrong frame</div>
+          <div class="camp-desc">There's no path because there's no one to walk it. The dosage question assumes a project and a practitioner — both of which are exactly what meditation is supposed to undo.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="debate" id="d1">
+    <div class="debate-card">
+      <div class="debate-num">Debate 2 of 5</div>
+      <div class="debate-q">Should you strengthen your ego — or see through it?</div>
+      <div class="debate-framing">The mainstream advice is dissolve the ego. But several serious teachers argue this is exactly wrong, and that premature dissolution produces spiritual bypassing rather than liberation.</div>
+      <div class="camps-label">Where the field divides</div>
+      <div class="camps">
+        <div class="camp">
+          <div class="camp-name">Strengthen it first</div>
+          <div class="camp-desc">Before transcendence is possible, there needs to be a stable self to transcend. Trying to dissolve a weak or wounded ego prematurely produces spiritual bypassing, not liberation.</div>
+        </div>
+        <div class="camp">
+          <div class="camp-name">See through it</div>
+          <div class="camp-desc">The ego isn't a problem to solve — it's a misunderstanding to recognize. Strengthening it first just makes the misunderstanding more comfortable and harder to examine.</div>
+        </div>
+        <div class="camp">
+          <div class="camp-name">Fighting it makes it worse</div>
+          <div class="camp-desc">Every attempt to dissolve the ego is the ego trying to dissolve itself. The effort reinforces the very thing it's trying to undo. The approach has to be indirect.</div>
+        </div>
+        <div class="camp">
+          <div class="camp-name">There's no ego to fix or transcend</div>
+          <div class="camp-desc">There's no 'ego' in the sense being debated — and therefore nothing to fix or transcend. The debate itself is the confusion that needs examining.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="debate" id="d2">
+    <div class="debate-card">
+      <div class="debate-num">Debate 3 of 5</div>
+      <div class="debate-q">Are you already awakened right now?</div>
+      <div class="debate-framing">One of the oldest debates in contemplative practice. Whether the answer is yes, no, or neither depends almost entirely on who you ask — and serious teachers land on every side.</div>
+      <div class="camps-label">Where the field divides</div>
+      <div class="camps">
+        <div class="camp">
+          <div class="camp-name">Yes — right now</div>
+          <div class="camp-desc">Awareness is already present, complete, and undamaged. Recognition is available immediately. You don't need to do anything to become what you already are — only to recognize it.</div>
+        </div>
+        <div class="camp">
+          <div class="camp-name">No — a real shift is required</div>
+          <div class="camp-desc">Awakening is an irreversible change, not a reframing. There's a clear before and after. Saying 'you're already there' may be technically true in some sense, but is functionally misleading.</div>
+        </div>
+        <div class="camp">
+          <div class="camp-name">The claim is dangerous</div>
+          <div class="camp-desc">Telling someone they're already enlightened produces complacency, not inquiry. It's a teaching that tends to generate spiritual bypassing — using the idea of completion to avoid actual transformation.</div>
+        </div>
+        <div class="camp">
+          <div class="camp-name">There's no 'you' to be awakened</div>
+          <div class="camp-desc">The question assumes an entity that could or couldn't be awakened. That assumption — that there's a stable self waiting to arrive somewhere — is exactly what the inquiry is meant to dissolve.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="debate" id="d3">
+    <div class="debate-card">
+      <div class="debate-num">Debate 4 of 5</div>
+      <div class="debate-q">Is meditation always safe?</div>
+      <div class="debate-framing">The wellness industry treats this as obvious. The empirical research says it's more complicated. The gap between those two positions is rarely discussed in public.</div>
+      <div class="camps-label">Where the field divides</div>
+      <div class="camps">
+        <div class="camp">
+          <div class="camp-name">Broadly yes</div>
+          <div class="camp-desc">The research supports benefits across populations. Most people who practice report positive effects. Adverse events are rare, usually transient, and minor compared to documented benefits.</div>
+        </div>
+        <div class="camp">
+          <div class="camp-name">Individual variation matters</div>
+          <div class="camp-desc">Different people respond differently to different techniques. What works reliably for one person can be actively unhelpful for another. One approach does not fit all situations or histories.</div>
+        </div>
+        <div class="camp">
+          <div class="camp-name">The field systematically underreports harms</div>
+          <div class="camp-desc">Adverse effects — ranging from unsettling to seriously disorienting — are documented, but rarely discussed. The entire public conversation emphasizes benefits and systematically excludes downsides.</div>
+        </div>
+        <div class="camp">
+          <div class="camp-name">Safety depends on guidance</div>
+          <div class="camp-desc">The same technique, with skilled individual guidance, produces very different outcomes than self-directed app-based practice. The gap between those two contexts is almost never acknowledged.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="debate" id="d4">
+    <div class="debate-card">
+      <div class="debate-num">Debate 5 of 5</div>
+      <div class="debate-q">What is suffering actually for?</div>
+      <div class="debate-framing">The answer to this question determines nearly everything about how you practice. Move toward it? Away from it? Or is the question itself a category error? The field points in opposite directions.</div>
+      <div class="camps-label">Where the field divides</div>
+      <div class="camps">
+        <div class="camp">
+          <div class="camp-name">It's a necessary teacher</div>
+          <div class="camp-desc">Suffering is what wakes you up. The instinct to avoid discomfort is the mechanism that keeps you stuck. Moving toward it, not away, is how practice deepens. Eliminating it prematurely removes the signal.</div>
+        </div>
+        <div class="camp">
+          <div class="camp-name">It's an obstacle to remove</div>
+          <div class="camp-desc">The reduction of unnecessary suffering is the entire point. Mindfulness is a tool for alleviating what doesn't serve you. The therapeutic model doesn't need a philosophical frame to work.</div>
+        </div>
+        <div class="camp">
+          <div class="camp-name">It's something to see through</div>
+          <div class="camp-desc">Suffering is neither a teacher nor an obstacle — it's a pattern to recognize. You don't learn from it or eliminate it; you stop being fooled by it. The problem isn't the suffering — it's the relationship to it.</div>
+        </div>
+        <div class="camp">
+          <div class="camp-name">It's a feedback signal</div>
+          <div class="camp-desc">Suffering is information about misalignment — between behavior and values, action and consequence, expectation and reality. It points toward what needs calibration, not transcendence.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bottom-nav">
+    <button class="nav-btn" id="prevBtn" onclick="go(-1)" disabled>← Previous</button>
+    <span class="nav-counter" id="counter">1 / 5</span>
+    <button class="nav-btn" id="nextBtn" onclick="go(1)">Next →</button>
+  </div>
+
 </div>
 
 <footer>
-  <a href="https://nickxma.github.io/meditation-quiz/" target="_blank">What kind of meditator are you? →</a>
+  <div class="footer-links">
+    <span class="footer-label">Explore more:</span>
+    <a href="https://nickxma.github.io/meditation-quiz/">What kind of meditator are you?</a>
+    <a href="https://nickxma.github.io/meditation-recommender/">What should I actually practice?</a>
+  </div>
 </footer>
 
 <script>
-const qs = [
-  {
-    question: "Does more practice lead to more benefit?",
-    camps: [
-      {
-        name: "Yes — it accumulates",
-        desc: "Years of consistent practice produces real, measurable gains. The skill deepens. Someone with decades of daily practice has a genuine advantage over someone who started last month."
-      },
-      {
-        name: "No — you can't improve what's already complete",
-        desc: "The thing you're looking for was never absent. More sitting doesn't help you arrive at what's already here. A long-term practitioner has no fundamental advantage over someone encountering this for the first time."
-      },
-      {
-        name: "It depends — the curve isn't linear",
-        desc: "The relationship between practice and benefit isn't monotonic. Too little and nothing shifts. Too much and it can become counterproductive. Individual variation matters more than total hours."
-      },
-      {
-        name: "The question assumes the wrong frame",
-        desc: "There's no path because there's no one to walk it. The dosage question assumes a project and a practitioner — both of which are exactly what meditation is supposed to undo."
-      }
-    ]
-  },
-  {
-    question: "Do you need to fix your ego, or see through it?",
-    camps: [
-      {
-        name: "Fix it first",
-        desc: "Before transcendence is possible, there needs to be a stable self to transcend. Trying to dissolve a weak or wounded ego prematurely produces spiritual bypassing, not liberation."
-      },
-      {
-        name: "See through it",
-        desc: "The ego isn't a problem to solve — it's a misunderstanding to recognize. Strengthening it first just makes the misunderstanding more comfortable and harder to examine."
-      },
-      {
-        name: "Fighting it makes it worse",
-        desc: "Every attempt to dissolve the ego is the ego trying to dissolve itself. The effort reinforces the very thing it's trying to undo. The approach has to be indirect."
-      },
-      {
-        name: "There's no ego to fix or transcend",
-        desc: "There's no 'ego' in the sense being debated — and therefore nothing to fix or transcend. The debate itself is the confusion that needs examining."
-      }
-    ]
-  },
-  {
-    question: "Are you already awakened?",
-    camps: [
-      {
-        name: "Yes — right now",
-        desc: "Awareness is already present, complete, and undamaged. Recognition is available immediately to anyone willing to look directly. You don't need to do anything to become what you already are."
-      },
-      {
-        name: "No — a real shift is required",
-        desc: "Awakening is an irreversible change, not a reframing. There's a clear before and after. Saying 'you're already there' may be technically true in some sense, but is functionally misleading."
-      },
-      {
-        name: "The claim is dangerous",
-        desc: "Telling someone they're already enlightened produces complacency, not inquiry. It's a teaching that tends to generate spiritual bypassing — using the idea of completion to avoid actual transformation."
-      },
-      {
-        name: "There's no 'you' to be awakened",
-        desc: "The question assumes an entity that could or couldn't be awakened. That assumption — that there's a stable self waiting to arrive somewhere — is exactly what the inquiry is meant to dissolve."
-      }
-    ]
-  },
-  {
-    question: "Is meditation always safe?",
-    camps: [
-      {
-        name: "Broadly yes",
-        desc: "The research supports benefits across populations. Most people who practice report positive effects. Adverse events are rare, usually transient, and minor compared to documented benefits."
-      },
-      {
-        name: "Individual variation matters",
-        desc: "Different people respond differently to different techniques. What works reliably for one person — intensive insight practice, say — can be actively unhelpful for another. One size doesn't fit all."
-      },
-      {
-        name: "The field systematically underreports harms",
-        desc: "Adverse effects — ranging from unsettling to seriously disorienting — are documented, but rarely discussed. The entire public conversation emphasizes benefits and systematically excludes downsides."
-      },
-      {
-        name: "Safety depends on guidance",
-        desc: "The same technique, with skilled individual guidance, produces very different outcomes than self-directed app-based practice. The gap between those two contexts is almost never acknowledged."
-      }
-    ]
-  },
-  {
-    question: "What is suffering for?",
-    camps: [
-      {
-        name: "It's a necessary teacher",
-        desc: "Suffering is what wakes you up. The instinct to avoid discomfort is the mechanism that keeps you stuck. Moving toward it, not away, is how practice deepens. Eliminating it prematurely removes the signal."
-      },
-      {
-        name: "It's an obstacle to remove",
-        desc: "The reduction of unnecessary suffering is the entire point of practice. Mindfulness is a tool for alleviating what doesn't serve you. The therapeutic model doesn't need a philosophical frame."
-      },
-      {
-        name: "It's something to see through",
-        desc: "Suffering is neither a teacher nor an obstacle — it's a pattern to recognize. You don't learn from it or eliminate it; you stop being fooled by it. The problem isn't the suffering — it's the relationship to it."
-      },
-      {
-        name: "It's a feedback signal",
-        desc: "Suffering is information about misalignment — between behavior and values, action and consequence, expectation and reality. It points toward what needs calibration, not transcendence."
-      }
-    ]
-  }
-];
+let current = 0;
+const total = 5;
 
-let idx = 0;
-let flipped = false;
-
-function buildDots() {
-  const row = document.getElementById('dots');
-  row.innerHTML = qs.map((_, i) => `<div class="dot" id="dot${i}"></div>`).join('');
-  updateDots();
-}
-
-function updateDots() {
-  qs.forEach((_, i) => {
-    const d = document.getElementById('dot'+i);
-    d.className = 'dot' + (i === idx ? ' active' : i < idx ? ' done' : '');
-  });
-}
-
-function render() {
-  const q = qs[idx];
-  document.getElementById('front').innerHTML = `
-    <div class="q-label">Question ${idx+1} of ${qs.length}</div>
-    <div class="q-text">${q.question}</div>
-    <div class="flip-cue">
-      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
-        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>
-      </svg>
-      Tap to see where the field divides
-    </div>
-  `;
-  document.getElementById('back').innerHTML = `
-    <div class="back-header">The field is divided</div>
-    <div class="camps">
-      ${q.camps.map(c => `
-        <div class="camp">
-          <div class="camp-name">${c.name}</div>
-          <div class="camp-desc">${c.desc}</div>
-        </div>
-      `).join('')}
-    </div>
-  `;
+function show(idx) {
+  document.querySelectorAll('.debate').forEach((d, i) => d.classList.toggle('active', i === idx));
+  document.querySelectorAll('.tab-btn').forEach((b, i) => b.classList.toggle('active', i === idx));
+  current = idx;
   document.getElementById('prevBtn').disabled = idx === 0;
-  document.getElementById('nextBtn').textContent = idx === qs.length - 1 ? 'Finish →' : 'Next →';
-  updateDots();
-}
-
-function flip() {
-  flipped = !flipped;
-  document.getElementById('card').classList.toggle('flipped', flipped);
+  document.getElementById('nextBtn').disabled = idx === total - 1;
+  document.getElementById('counter').textContent = `${idx + 1} / ${total}`;
+  // Scroll tab into view
+  document.querySelectorAll('.tab-btn')[idx].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
 }
 
 function go(dir) {
-  if (dir === 1 && idx === qs.length - 1) {
-    document.getElementById('cardWrap').style.display = 'none';
-    document.getElementById('done').style.display = 'flex';
-    document.getElementById('dots').style.display = 'none';
-    return;
-  }
-  const next = idx + dir;
-  if (next < 0 || next >= qs.length) return;
-  idx = next;
-  flipped = false;
-  document.getElementById('card').classList.remove('flipped');
-  render();
+  const next = current + dir;
+  if (next < 0 || next >= total) return;
+  show(next);
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
-
-function restart() {
-  idx = 0;
-  flipped = false;
-  document.getElementById('card').classList.remove('flipped');
-  document.getElementById('cardWrap').style.display = 'flex';
-  document.getElementById('done').style.display = 'none';
-  document.getElementById('dots').style.display = 'flex';
-  render();
-}
-
-buildDots();
-render();
 </script>
 </body>
 </html>
