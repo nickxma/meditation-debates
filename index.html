@@ -31,6 +31,7 @@ body {
   justify-content: space-between;
   padding: 24px 48px;
   border-bottom: 1px solid #EEE;
+  width: 100%;
 }
 .poa-nav-brand {
   font-family: 'Newsreader', serif;
@@ -458,15 +459,22 @@ h1 {
 }
 
 @media (max-width: 600px) {
-  .poa-nav { padding: 24px 24px; }
-  .poa-nav-brand { font-size: 17px; }
-  .poa-nav-links { gap: 24px; }
+  .poa-nav { padding: 18px 20px; }
+  .poa-nav-brand { font-size: 16px; }
+  .poa-nav-links { gap: 18px; }
   .poa-nav-links a { font-size: 12px; }
   .debate-card { padding: 28px 22px 24px; }
   .footer-inner {
     flex-direction: column;
     gap: 32px;
   }
+}
+
+@media (max-width: 400px) {
+  .poa-nav { padding: 14px 16px; }
+  .poa-nav-brand { font-size: 15px; }
+  .poa-nav-links { gap: 12px; }
+  .poa-nav-links a { font-size: 11px; }
 }
 </style>
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
